@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NOTA - PG STREET COFFEE</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        main.receipt-page {
+            max-width: 440px;
+            margin: 48px auto;
+            padding: 12px 10px;
+        }
+        .receipt-box {
+            width: 100%;
+            max-width: 420px;
+            padding: 24px 20px;
+        }
+        #receipt-container {
+            font-size: 0.92rem;
+            line-height: 1.45;
+        }
+        .receipt-block {
+            border: 1px solid rgba(255,255,255,0.08);
+            padding: 16px;
+            border-radius: 18px;
+            background: rgba(0,0,0,0.55);
+        }
+        .receipt-header,
+        .receipt-info {
+            display: flex;
+            justify-content: space-between;
+            gap: 12px;
+            align-items: flex-start;
+            margin-bottom: 12px;
+            font-size: 0.9rem;
+        }
+        .receipt-header small,
+        .receipt-info small {
+            color: var(--text-muted);
+        }
+        .receipt-items {
+            border-top: 1px solid rgba(255,255,255,0.08);
+            padding-top: 10px;
+        }
+        .receipt-row {
+            display: flex;
+            justify-content: space-between;
+            gap: 8px;
+            padding: 6px 0;
+            border-bottom: 1px dashed rgba(255,255,255,0.08);
+            font-size: 0.88rem;
+        }
+        .receipt-row:last-child {
+            border-bottom: none;
+        }
+        .receipt-row span {
+            display: inline-block;
+            min-width: 65px;
+        }
+        .receipt-meta {
+            margin-top: 14px;
+            font-size: 0.92rem;
+            color: var(--text-muted);
+        }
+        .receipt-meta strong {
+            color: var(--text-light);
+            font-weight: 700;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <button id="hamburger-menu" class="hamburger">&#9776;</button>
+        <div class="nav-logo">PG <span>STREET COFFEE</span></div>
+    </nav>
+
+    <main class="receipt-page">
+        <div class="modal-box receipt-box">
+            <h2 class="modal-title">NOTA PEMBAYARAN</h2>
+            <div id="receipt-container" style="margin-top:18px; font-family: 'Courier New', monospace;"></div>
+            <div style="margin-top:16px; display:flex; gap:10px; flex-wrap:wrap; justify-content:center;">
+                <a href="menu.html" class="btn-punk-outline" style="padding:10px 18px; font-size:0.88rem;">KEMBALI</a>
+                <button id="print-receipt" class="btn-punk" style="padding:10px 18px; font-size:0.88rem;">CETAK / SIMPAN</button>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', ()=>{
+            let data = JSON.parse(localStorage.getItem('punkLastReceipt') || 'null');
+            const container = document.getElementById('receipt-container');
+            if (!data) {
+                container.innerHTML = '<p>Tidak ada nota tersedia.</p>';
+                return;
+            }
+
+            const itemsHtml = data.items.map(i => `<div class="receipt-row"><span>${i.name} x${i.quantity}</span><span>IDR ${i.price}K</span></div>`).join('');
+
+            function renderReceipt() {
+                const statusLabel = data.status ? data.status.toUpperCase() : '';
+                let extraSection = '';
+
+                if (data.method === 'qris') {
+                    if (data.status === 'pending') {
+                        extraSection = `
+                            <div style="margin-top:12px; text-align:center;">
+                                <p style="margin-bottom:8px;">Silakan pindai QR berikut untuk membayar (popup):</p>
+                                <div style="margin-top:10px;"><button id="open-qris-modal" class="btn-punk">TAMPILKAN QRIS</button></div>
+                            </div>
+                        `;
+                    } else if (data.status === 'paid') {
+                        extraSection = `<p style="color:var(--neon-green);">Pembayaran terkonfirmasi. Terima kasih!</p>`;
+                    } else if (data.status === 'expired') {
+                        extraSection = `<p style="color:#ff6666;">QR kadaluarsa. Silakan lakukan pemesanan ulang.</p>`;
+                    }
+                } else if (data.method === 'bank') {
+                    extraSection = `
+                        <div style="margin-top:12px;">
+                            <p>Instruksi transfer:</p>
+                            <pre style="background:#000; padding:10px; border-radius:6px;">${data.bankInfo || 'Bank info tidak tersedia'}</pre>
+                        </div>
+                    `;
+                } else if (data.method === 'cod') {
+                    extraSection = `<p>COD: Siapkan pembayaran tunai saat kurir tiba.</p>`;
+                }
+
+                container.innerHTML = `
+                    <div class="receipt-block">
+                        <div class="receipt-header">
+                            <div>
+                                <div><strong>Nota#</strong> ${data.receiptId}</div>
+                                <small>${new Date(data.createdAt).toLocaleString()}</small>
+                            </div>
+                            <div style="text-align:right; min-width: 140px;">
+                                <div class="receipt-meta"><strong>Metode:</strong> ${data.method.toUpperCase()}</div>
+                                <div class="receipt-meta"><strong>Status:</strong> ${statusLabel}</div>
+                                <div class="receipt-meta"><strong>Total:</strong> IDR ${data.total}K</div>
+                            </div>
+                        </div>
+                        <div class="receipt-items">${itemsHtml}</div>
+                        ${extraSection}
+                    </div>
+                `;
+
+                // attach print handler
+                document.getElementById('print-receipt').addEventListener('click', ()=>{
+                    window.print();
+                });
+
+                // attach handler to open QR modal
+                const openBtn = document.getElementById('open-qris-modal');
+                if (openBtn) {
+                    openBtn.addEventListener('click', ()=>{
+                        showQrModal();
+                    });
+                }
+            }
+
+            renderReceipt();
+
+            // QR modal logic
+            let qrInterval = null;
+            function showQrModal() {
+                // remove existing modal if any
+                const existing = document.getElementById('qris-modal-overlay');
+                if (existing) existing.remove();
+
+                const overlay = document.createElement('div');
+                overlay.id = 'qris-modal-overlay';
+                overlay.className = 'qris-modal-overlay';
+
+                const modal = document.createElement('div');
+                modal.className = 'qris-modal';
+                modal.innerHTML = `
+                    <button class="btn-close" id="close-qris-modal">&times;</button>
+                    <h3>QRIS PAYMENT</h3>
+                    <div class="qris-countdown" id="qris-countdown">Loading...</div>
+                    <img id="qris-img-modal" src="${data.paymentQr || ''}" alt="QRIS" />
+                    <div style="margin-top:12px; display:flex; gap:8px; justify-content:center;">
+                        <button id="confirm-qris-modal" class="btn-punk">SAYA SUDAH BAYAR</button>
+                        <button id="close-qris-modal-2" class="btn-punk-outline">TUTUP</button>
+                    </div>
+                `;
+
+                overlay.appendChild(modal);
+                document.body.appendChild(overlay);
+
+                const closeBtn = document.getElementById('close-qris-modal');
+                const closeBtn2 = document.getElementById('close-qris-modal-2');
+                const confirmBtn = document.getElementById('confirm-qris-modal');
+                const countdownEl = document.getElementById('qris-countdown');
+                const qrImg = document.getElementById('qris-img-modal');
+
+                // set img src if missing
+                if (!qrImg.src || qrImg.src === window.location.href) {
+                    qrImg.src = data.paymentQr || (`https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=${encodeURIComponent('Nota:'+data.receiptId+'|Total:IDR'+data.total+'K')}`);
+                }
+
+                function updateCountdown() {
+                    const expiry = data.createdAt + (15 * 60 * 1000);
+                    const now = Date.now();
+                    const diff = expiry - now;
+                    if (diff <= 0) {
+                        clearInterval(qrInterval);
+                        data.status = 'expired';
+                        localStorage.setItem('punkLastReceipt', JSON.stringify(data));
+                        countdownEl.textContent = 'QR EXPIRED';
+                        countdownEl.classList.add('expired');
+                        confirmBtn.disabled = true;
+                        renderReceipt();
+                        return;
+                    }
+                    const mins = Math.floor(diff / 60000);
+                    const secs = Math.floor((diff % 60000) / 1000);
+                    countdownEl.textContent = `Kadaluarsa dalam: ${String(mins).padStart(2,'0')}:${String(secs).padStart(2,'0')}`;
+                }
+
+                updateCountdown();
+                qrInterval = setInterval(updateCountdown, 1000);
+
+                // handlers
+                function closeModal() {
+                    clearInterval(qrInterval);
+                    overlay.remove();
+                }
+
+                closeBtn && closeBtn.addEventListener('click', closeModal);
+                closeBtn2 && closeBtn2.addEventListener('click', closeModal);
+
+                confirmBtn && confirmBtn.addEventListener('click', ()=>{
+                    // mark as paid
+                    clearInterval(qrInterval);
+                    data.status = 'paid';
+                    localStorage.setItem('punkLastReceipt', JSON.stringify(data));
+                    alert('Pembayaran terkonfirmasi (simulasi). Terima kasih!');
+                    renderReceipt();
+                    overlay.remove();
+                });
+            }
+        });
+    </script>
+</body>
+</html>

@@ -3,75 +3,72 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PG STREET COFFEE</title>
+    <title>MANIFESTO | PG Street Coffee</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <nav class="navbar">
         <button id="hamburger-menu" class="hamburger">&#9776;</button>
-
         <div class="nav-logo">PG <span>STREET COFFEE</span></div>
-        
         <ul class="nav-links" id="nav-links-container">
-            <li><a href="index.html" class="active-page">HOME</a></li>
+            <li><a href="index.html">HOME</a></li>
             <li><a href="menu.html">THE FUEL</a></li>
             <li><a href="gallery.html">GALLERY</a></li>
-            <li><a href="about.html">OUR RIOT</a></li>
+            <li><a href="about.html" class="active-page">OUR RIOT</a></li>
             <li><a href="contact.html">CONTACT</a></li>
             <li class="auth-only hidden"><a href="dashboard.html">DASHBOARD</a></li>
             <li class="auth-only hidden"><a href="profile.html">PROFILE</a></li>
         </ul>
-        
         <div class="nav-actions">
+
             <a href="#" id="cart-trigger" class="cart-punk-link auth-only">
                 <span class="cart-punk-icon">🛒</span>
                 <span id="cart-count" class="cart-punk-badge">0</span>
             </a>
 
-            <button id="auth-trigger" class="btn-nav">MEMBER SIGN-IN</button>
+            <button class="btn-nav" id="auth-trigger">MEMBER SIGN-IN</button>
         </div>
     </nav>
 
-    <header class="hero">
-        <div class="hero-content">
-            <h1 class="brand-logo">PG <span>STREET COFFEE</span></h1>
-            <div class="tagline">HIGH CAFFEINE // NO RULES</div>
-            <p class="sub-tagline">
-                Kami tidak menyeduh kopi instan untuk kaum borjuis. Kami meracik bahan bakar murni 
-                berenergi tinggi langsung dari aspal jalanan kota untuk menjaga Anda tetap terjaga 
-                menembus rotasi sistem malam yang anarkis.
-            </p>
-            <div class="hero-buttons">
-                <a href="menu.html" class="btn-punk">ISI BENSINMU (VIEW MENU)</a>
-                <a href="about.html" class="btn-punk-outline">BACA MANIFESTO</a>
-            </div>
-        </div>
+    <header class="page-header">
+        <h1 class="page-title">THE <span>MANIFESTO</span></h1>
+        <p class="page-subtitle">Bukan sekadar kedai kopi, tapi pusat perlawanan terhadap budaya kopi yang kaku. PG Street Coffee adalah bahan bakar untuk kalian yang berani melawan arus.</p>
     </header>
 
-    <section class="highlight-section">
-        <h2 class="section-title">WHY WE <span>RIOT?</span></h2>
+    <main class="about-container">
         
-        <div class="highlight-grid">
-            <div class="highlight-card">
-                <span class="card-tag">[ CODE.01 ]</span>
-                <h3>BIJI KOPI ILEGAL</h3>
-                <p>Dipasok langsung dari petani lokal independen secara gerilya tanpa melalui tengkulak korporat skala besar.</p>
+        <div class="about-hero-wrapper">
+            
+            <div class="about-img-box">
+                <img src="image/about.jpg" alt="PG Street Crew Markas" class="about-display-img">
             </div>
 
-            <div class="highlight-card">
-                <span class="card-tag">[ CODE.02 ]</span>
-                <h3>OVERDOSE KAFEIN</h3>
-                <p>Ekstraksi keras takaran ganda standar jalanan. Menjamin pasokan fokus Anda bertahan hingga fajar tiba.</p>
+            <div class="about-text-box">
+                <div class="manifesto-box">
+                    <p>
+                        Dilahirkan di tengah bising knalpot, debu jalanan, dan kepulan asap kota. 
+                        PG Street Coffee didirikan oleh sekelompok pemberontak kreatif yang muak 
+                        dengan budaya kedai kopi modern yang kaku, mahal, dan penuh kepura-puraan.
+                    </p>
+                    <br>
+                    <p>
+                        Kami merebut kembali makna kopi sejati: bahan bakar murni berenergi tinggi 
+                        tanpa aturan protokol yang membosankan.
+                    </p>
+                    <br>
+                    <p>
+                        Biji kopi kami didapatkan secara gerilya langsung dari tangan petani lokal 
+                        independen, dipanggang secara radikal hingga menghasilkan ekstraksi kafein 
+                        takaran ganda demi menyokong fokus para pekerja keras malam, seniman visual, 
+                        dan komunitas sub-kultur urban.
+                    </p>
+                </div>
             </div>
 
-            <div class="highlight-card">
-                <span class="card-tag">[ CODE.03 ]</span>
-                <h3>MARKAS BEBAS</h3>
-                <p>Tanpa stopkontak tersembunyi atau Wi-Fi lambat. Hanya ada distorsi musik keras dan obrolan bawah tanah.</p>
-            </div>
         </div>
-    </section>
+
+    </main>
 
     <div class="auth-modal" id="auth-modal">
         <div class="modal-box">
@@ -177,10 +174,8 @@
     </div>
 
     <footer>
-        <p>&copy; 2026 PG STREET COFFEE - NO RULES, JUST CAFFEINE.</p>
+        &copy; 2026 PG STREET COFFEE. REBEL AGAINST THE MACHINE.
     </footer>
-
-    <div id="toast-container" class="toast-container"></div>
 
     <script src="main.js"></script>
 </body>

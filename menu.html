@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PG STREET COFFEE</title>
+    <title>THE FUEL MENU - PG STREET COFFEE</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -14,8 +14,8 @@
         <div class="nav-logo">PG <span>STREET COFFEE</span></div>
         
         <ul class="nav-links" id="nav-links-container">
-            <li><a href="index.html" class="active-page">HOME</a></li>
-            <li><a href="menu.html">THE FUEL</a></li>
+            <li><a href="index.html">HOME</a></li>
+            <li><a href="menu.html" class="active-page">THE FUEL</a></li>
             <li><a href="gallery.html">GALLERY</a></li>
             <li><a href="about.html">OUR RIOT</a></li>
             <li><a href="contact.html">CONTACT</a></li>
@@ -33,45 +33,32 @@
         </div>
     </nav>
 
-    <header class="hero">
-        <div class="hero-content">
-            <h1 class="brand-logo">PG <span>STREET COFFEE</span></h1>
-            <div class="tagline">HIGH CAFFEINE // NO RULES</div>
-            <p class="sub-tagline">
-                Kami tidak menyeduh kopi instan untuk kaum borjuis. Kami meracik bahan bakar murni 
-                berenergi tinggi langsung dari aspal jalanan kota untuk menjaga Anda tetap terjaga 
-                menembus rotasi sistem malam yang anarkis.
-            </p>
-            <div class="hero-buttons">
-                <a href="menu.html" class="btn-punk">ISI BENSINMU (VIEW MENU)</a>
-                <a href="about.html" class="btn-punk-outline">BACA MANIFESTO</a>
-            </div>
-        </div>
+    <header class="page-header">
+        <h1 class="page-title">THE <span>FUEL</span></h1>
+        <p class="page-subtitle">
+            Pilih asupan kafein ganda standar aspal jalanan atau camilan perusak lapar malam Anda di bawah ini.
+        </p>
     </header>
 
-    <section class="highlight-section">
-        <h2 class="section-title">WHY WE <span>RIOT?</span></h2>
-        
-        <div class="highlight-grid">
-            <div class="highlight-card">
-                <span class="card-tag">[ CODE.01 ]</span>
-                <h3>BIJI KOPI ILEGAL</h3>
-                <p>Dipasok langsung dari petani lokal independen secara gerilya tanpa melalui tengkulak korporat skala besar.</p>
-            </div>
+    <main class="menu-container">
+        <div class="menu-content-wrapper">
+            
+            <aside class="menu-sidebar">
+                <h3 class="sidebar-title">[ CATEGORY ]</h3>
+                <div class="menu-tabs">
+                    <button class="tab-btn active" data-category="all">ALL FUEL</button>
+                    <button class="tab-btn" data-category="best">BEST SELLER</button>
+                    <button class="tab-btn" data-category="coffee">COFFEE BASE</button>
+                    <button class="tab-btn" data-category="noncoffee">NON-COFFEE</button>
+                    <button class="tab-btn" data-category="snack">STREET SNACKS</button>
+                </div>
+            </aside>
 
-            <div class="highlight-card">
-                <span class="card-tag">[ CODE.02 ]</span>
-                <h3>OVERDOSE KAFEIN</h3>
-                <p>Ekstraksi keras takaran ganda standar jalanan. Menjamin pasokan fokus Anda bertahan hingga fajar tiba.</p>
-            </div>
+            <div class="menu-grid" id="menu-grid">
+                </div>
 
-            <div class="highlight-card">
-                <span class="card-tag">[ CODE.03 ]</span>
-                <h3>MARKAS BEBAS</h3>
-                <p>Tanpa stopkontak tersembunyi atau Wi-Fi lambat. Hanya ada distorsi musik keras dan obrolan bawah tanah.</p>
-            </div>
         </div>
-    </section>
+    </main>
 
     <div class="auth-modal" id="auth-modal">
         <div class="modal-box">

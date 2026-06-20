@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MY PROFILE - PG STREET COFFEE</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <button id="hamburger-menu" class="hamburger">&#9776;</button>
+
+        <div class="nav-logo">PG <span>STREET COFFEE</span></div>
+        
+        <ul class="nav-links" id="nav-links-container">
+            <li><a href="index.html">HOME</a></li>
+            <li><a href="menu.html">THE FUEL</a></li>
+            <li><a href="gallery.html">GALLERY</a></li>
+            <li><a href="about.html">OUR RIOT</a></li>
+            <li><a href="contact.html">CONTACT</a></li>
+            <li><a href="dashboard.html">DASHBOARD</a></li>
+            <li><a href="profile.html" class="active-page">PROFILE</a></li>
+        </ul>
+        
+        <div class="nav-actions">
+            <button id="auth-trigger" class="btn-nav">MEMBER SIGN-IN</button>
+        </div>
+    </nav>
+
+    <header class="page-header">
+        <h1 class="page-title">MY <span>PROFILE</span></h1>
+        <p class="page-subtitle">
+            Kelola identitas dan preferensi pemberontak Anda di markas PG Street Coffee.
+        </p>
+    </header>
+
+    <main class="profile-container">
+        <div class="profile-content-wrapper">
+            
+            <!-- Profile Card -->
+            <section class="profile-card-section">
+                <div class="profile-card">
+                    <div class="profile-header">
+                        <div class="profile-avatar">
+                            <span id="avatar-initial">A</span>
+                        </div>
+                        <div class="profile-info-header">
+                            <h2 id="profile-name" class="profile-name">Ahmad Punk Warrior</h2>
+                            <p id="profile-member-id" class="profile-member-id">MEMBER ID: PGC-2024-001</p>
+                            <p id="profile-email" class="profile-email">ahmad@street.punk</p>
+                        </div>
+                    </div>
+
+                    <div class="profile-stats">
+                        <div class="stat-box">
+                            <span class="stat-label">TOTAL ORDER</span>
+                            <span class="stat-value" id="total-orders">28</span>
+                        </div>
+                        <div class="stat-box">
+                            <span class="stat-label">LOYALTY POINT</span>
+                            <span class="stat-value" id="loyalty-points">4,250</span>
+                        </div>
+                        <div class="stat-box">
+                            <span class="stat-label">FAVORITE FUEL</span>
+                            <span class="stat-value" id="fav-item">BLACK MOSH</span>
+                        </div>
+                        <div class="stat-box">
+                            <span class="stat-label">MEMBER SINCE</span>
+                            <span class="stat-value" id="member-since">2024</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Profile Sections -->
+            <div class="profile-sections-container">
+                
+                <!-- Personal Information Section -->
+                <section class="profile-section">
+                    <h3 class="section-title">[ IDENTITAS PEMBERONTAK ]</h3>
+                    <div class="section-content">
+                        <form id="profile-form" class="profile-form">
+                            <div class="form-group">
+                                <label for="full-name">NAMA LENGKAP:</label>
+                                <input type="text" id="full-name" placeholder="Masukkan nama Anda" value="Ahmad Punk Warrior">
+                            </div>
+                            <div class="form-group">
+                                <label for="email">EMAIL:</label>
+                                <input type="email" id="email" placeholder="email@street.punk" value="ahmad@street.punk">
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">NOMOR TELEPON:</label>
+                                <input type="tel" id="phone" placeholder="+62 812-3456-7890" value="+62 812-3456-7890">
+                            </div>
+                            <div class="form-group">
+                                <label for="address">ALAMAT MARKAS:</label>
+                                <textarea id="address" placeholder="Jl. Aspal No. 99, Kota Bising, 12345" rows="3">Jl. Aspal No. 99, Kota Bising, 12345</textarea>
+                            </div>
+                            <button type="submit" class="btn-punk">PERBARUI PROFIL</button>
+                        </form>
+                    </div>
+                </section>
+
+                <!-- Preferences Section -->
+                <section class="profile-section">
+                    <h3 class="section-title">[ PREFERENSI REBEL ]</h3>
+                    <div class="section-content">
+                        <div class="preferences-grid">
+                            <div class="pref-item">
+                                <label for="fav-coffee">KOPI FAVORIT:</label>
+                                <select id="fav-coffee">
+                                    <option>BLACK MOSHPIT</option>
+                                    <option>STREET ESPRESSO</option>
+                                    <option>NEON LATTE</option>
+                                    <option>VANDAL CAPPUCCINO</option>
+                                </select>
+                            </div>
+                            <div class="pref-item">
+                                <label for="caffeine-level">LEVEL KAFEIN:</label>
+                                <select id="caffeine-level">
+                                    <option>EKSTREM (DOUBLE SHOT)</option>
+                                    <option>TINGGI (SINGLE SHOT)</option>
+                                    <option>SEDANG (MIX)</option>
+                                    <option>RENDAH (RINGAN)</option>
+                                </select>
+                            </div>
+                            <div class="pref-item">
+                                <label for="sugar-level">PREFERENSI GULA:</label>
+                                <select id="sugar-level">
+                                    <option>TANPA GULA</option>
+                                    <option>SEDIKIT MANIS</option>
+                                    <option>NORMAL</option>
+                                    <option>SUPER MANIS</option>
+                                </select>
+                            </div>
+                            <div class="pref-item">
+                                <label for="drink-temp">SUHU MINUMAN:</label>
+                                <select id="drink-temp">
+                                    <option>PANAS (HOT)</option>
+                                    <option>DINGIN (ICED)</option>
+                                    <option>BLEND (CAMPUR)</option>
+                                </select>
+                            </div>
+                        </div>
+                        <button class="btn-punk-outline" onclick="savePreferences()">SIMPAN PREFERENSI</button>
+                    </div>
+                </section>
+
+                <!-- Recent Orders -->
+                <section class="profile-section">
+                    <h3 class="section-title">[ TRANSAKSI TERBARU ]</h3>
+                    <div class="section-content">
+                        <div class="orders-list">
+                            <div class="order-item">
+                                <div class="order-left">
+                                    <span class="order-date">15 Desember 2024</span>
+                                    <span class="order-items">Black Moshpit x2 + Punk Fries x1</span>
+                                </div>
+                                <div class="order-right">
+                                    <span class="order-price">IDR 55K</span>
+                                    <span class="order-status completed">✓ SELESAI</span>
+                                </div>
+                            </div>
+                            <div class="order-item">
+                                <div class="order-left">
+                                    <span class="order-date">14 Desember 2024</span>
+                                    <span class="order-items">Neon Latte x1 + Garage Croissant x1</span>
+                                </div>
+                                <div class="order-right">
+                                    <span class="order-price">IDR 45K</span>
+                                    <span class="order-status completed">✓ SELESAI</span>
+                                </div>
+                            </div>
+                            <div class="order-item">
+                                <div class="order-left">
+                                    <span class="order-date">12 Desember 2024</span>
+                                    <span class="order-items">Overdose Mocha x3</span>
+                                </div>
+                                <div class="order-right">
+                                    <span class="order-price">IDR 78K</span>
+                                    <span class="order-status completed">✓ SELESAI</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Loyalty Program -->
+                <section class="profile-section">
+                    <h3 class="section-title">[ PROGRAM LOYALITAS ]</h3>
+                    <div class="section-content">
+                        <div class="loyalty-card">
+                            <div class="loyalty-header">
+                                <h4>POIN LOYAL PEMBERONTAK</h4>
+                                <span class="loyalty-total">4,250 POINTS</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 70%"></div>
+                            </div>
+                            <p class="progress-text">Kumpulkan 750 poin lagi untuk tukar hadiah eksklusif</p>
+                            <div class="rewards-preview">
+                                <h5>REWARDS TERSEDIA:</h5>
+                                <ul>
+                                    <li>☕ Kopi Gratis (1,000 poin)</li>
+                                    <li>🎁 Merchandise Eksklusif (2,500 poin)</li>
+                                    <li>🔓 VIP Member 1 Bulan (5,000 poin)</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Security Section -->
+                <section class="profile-section">
+                    <h3 class="section-title">[ KEAMANAN MARKAS ]</h3>
+                    <div class="section-content">
+                        <div class="security-items">
+                            <div class="security-item">
+                                <div class="security-info">
+                                    <h5>KATA SANDI</h5>
+                                    <p>Ubah kata sandi akun Anda secara berkala untuk keamanan maksimal</p>
+                                </div>
+                                <button class="btn-punk-outline" onclick="openPasswordModal()">UBAH PASSWORD</button>
+                            </div>
+                            <div class="security-item">
+                                <div class="security-info">
+                                    <h5>VERIFIKASI DUA FAKTOR</h5>
+                                    <p>Aktifkan 2FA untuk perlindungan keamanan ekstra</p>
+                                </div>
+                                <button class="btn-punk-outline">AKTIFKAN 2FA</button>
+                            </div>
+                            <div class="security-item">
+                                <div class="security-info">
+                                    <h5>SESI AKTIF</h5>
+                                    <p>Kelola perangkat yang terhubung dengan akun Anda</p>
+                                </div>
+                                <button class="btn-punk-outline">KELOLA SESI</button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Danger Zone -->
+                <section class="profile-section danger-zone">
+                    <h3 class="section-title">[ ZONA BERBAHAYA ]</h3>
+                    <div class="section-content">
+                        <div class="danger-items">
+                            <div class="danger-item">
+                                <div>
+                                    <h5>HAPUS AKUN</h5>
+                                    <p>Tindakan ini tidak dapat dibatalkan. Semua data Anda akan dihapus permanen.</p>
+                                </div>
+                                <button class="btn-danger">HAPUS AKUN</button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2024 PG STREET COFFEE. All Rights Reserved. ANARKIS DAN PEMBERONTAK.</p>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
+    <script>
+        // Proteksi akses halaman profile jika belum login.
+        document.addEventListener('DOMContentLoaded', () => {
+            const isLoggedIn = localStorage.getItem('punkLoggedIn') === 'true';
+            if (!isLoggedIn) {
+                window.location.href = 'index.html';
+                return;
+            }
+
+            function savePreferences() {
+                alert('✓ PREFERENSI TERSIMPAN!\nKopi Anda siap sesuai seleramu.');
+            }
+
+            function openPasswordModal() {
+                alert('Dialog ubah password siap dibuka (implementasi lebih lanjut diperlukan)');
+            }
+
+            const navLinks = document.querySelectorAll('.nav-links a');
+            navLinks.forEach(link => {
+                link.classList.remove('active-page');
+                if (link.href.includes('profile.html')) {
+                    link.classList.add('active-page');
+                }
+            });
+
+            window.savePreferences = savePreferences;
+            window.openPasswordModal = openPasswordModal;
+        });
+    </script>
+</body>
+</html>

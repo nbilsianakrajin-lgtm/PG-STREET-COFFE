@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DASHBOARD - PG STREET COFFEE</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <button id="hamburger-menu" class="hamburger">&#9776;</button>
+
+        <div class="nav-logo">PG <span>STREET COFFEE</span></div>
+        
+        <ul class="nav-links" id="nav-links-container">
+            <li><a href="index.html">HOME</a></li>
+            <li><a href="menu.html">THE FUEL</a></li>
+            <li><a href="gallery.html">GALLERY</a></li>
+            <li><a href="about.html">OUR RIOT</a></li>
+            <li><a href="contact.html">CONTACT</a></li>
+            <li><a href="dashboard.html" class="active-page">DASHBOARD</a></li>
+            <li><a href="profile.html">PROFILE</a></li>
+        </ul>
+        
+        <div class="nav-actions">
+            <button id="auth-trigger" class="btn-nav">MEMBER SIGN-IN</button>
+        </div>
+    </nav>
+
+    <header class="page-header">
+        <h1 class="page-title">KONTROL <span>PANEL</span></h1>
+        <p class="page-subtitle">
+            Pantau semua aktivitas, pesanan, dan statistik konsumsi kafein Anda di markas PG Street Coffee.
+        </p>
+    </header>
+
+    <main class="dashboard-container">
+        <div class="dashboard-content">
+
+            <!-- Welcome Banner -->
+            <section class="welcome-banner">
+                <div class="banner-content">
+                    <h2>Selamat datang kembali, <span id="user-welcome">Pemberontak</span>! 🔥</h2>
+                    <p>Berikut adalah statistik konsumsi bahan bakar Anda bulan ini</p>
+                </div>
+            </section>
+
+            <!-- Quick Stats Grid -->
+            <section class="quick-stats">
+                <div class="stat-card">
+                    <div class="stat-icon">☕</div>
+                    <h4>TOTAL PESANAN</h4>
+                    <p class="stat-number">28</p>
+                    <span class="stat-period">Bulan ini</span>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">💰</div>
+                    <h4>TOTAL PENGELUARAN</h4>
+                    <p class="stat-number">IDR 654K</p>
+                    <span class="stat-period">Bulan ini</span>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">⚡</div>
+                    <h4>POIN LOYALITAS</h4>
+                    <p class="stat-number">4,250</p>
+                    <span class="stat-period">Tersedia</span>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">🎯</div>
+                    <h4>ITEM FAVORIT</h4>
+                    <p class="stat-number">BLACK MOS</p>
+                    <span class="stat-period">12 kali pesan</span>
+                </div>
+            </section>
+
+            <!-- Dashboard Grid -->
+            <div class="dashboard-grid">
+
+                <!-- Active Orders Section -->
+                <section class="dashboard-panel">
+                    <h3 class="panel-title">[ PESANAN AKTIF ]</h3>
+                    <div class="panel-content">
+                        <div class="active-orders">
+                            <div class="order-card active">
+                                <div class="order-status-badge pending">PENDING</div>
+                                <h4>Pesanan #PGC-2024-00152</h4>
+                                <p class="order-items">Black Moshpit x2 + Punk Fries x1</p>
+                                <p class="order-time">Perkiraan waktu: 15 menit</p>
+                                <button class="btn-punk-outline small">LACAK PESANAN</button>
+                            </div>
+                        </div>
+                        <p class="empty-state">Tidak ada pesanan aktif saat ini</p>
+                    </div>
+                </section>
+
+                <!-- Recent Transactions -->
+                <section class="dashboard-panel">
+                    <h3 class="panel-title">[ TRANSAKSI TERBARU ]</h3>
+                    <div class="panel-content">
+                        <div class="transaction-list">
+                            <div class="transaction-item">
+                                <span class="trans-date">15 Des</span>
+                                <span class="trans-desc">Black Moshpit</span>
+                                <span class="trans-amount">- IDR 20K</span>
+                            </div>
+                            <div class="transaction-item">
+                                <span class="trans-date">15 Des</span>
+                                <span class="trans-desc">Punk Fries</span>
+                                <span class="trans-amount">- IDR 17K</span>
+                            </div>
+                            <div class="transaction-item">
+                                <span class="trans-date">14 Des</span>
+                                <span class="trans-desc">Neon Latte</span>
+                                <span class="trans-amount">- IDR 25K</span>
+                            </div>
+                            <div class="transaction-item">
+                                <span class="trans-date">14 Des</span>
+                                <span class="trans-desc">Garage Croissant</span>
+                                <span class="trans-amount">- IDR 20K</span>
+                            </div>
+                        </div>
+                        <a href="profile.html" class="btn-punk-outline small">LIHAT SEMUA</a>
+                    </div>
+                </section>
+
+                <!-- Top Items -->
+                <section class="dashboard-panel">
+                    <h3 class="panel-title">[ FUEL FAVORIT ]</h3>
+                    <div class="panel-content">
+                        <div class="top-items">
+                            <div class="top-item">
+                                <span class="rank">1</span>
+                                <span class="name">BLACK MOSHPIT</span>
+                                <span class="count">12x</span>
+                            </div>
+                            <div class="top-item">
+                                <span class="rank">2</span>
+                                <span class="name">NEON LATTE</span>
+                                <span class="count">8x</span>
+                            </div>
+                            <div class="top-item">
+                                <span class="rank">3</span>
+                                <span class="name">PUNK FRIES</span>
+                                <span class="count">7x</span>
+                            </div>
+                            <div class="top-item">
+                                <span class="rank">4</span>
+                                <span class="name">VANDAL CAPPUCCINO</span>
+                                <span class="count">5x</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Spending Chart -->
+                <section class="dashboard-panel">
+                    <h3 class="panel-title">[ POLA KONSUMSI ]</h3>
+                    <div class="panel-content">
+                        <div class="chart-container">
+                            <div class="chart-label">
+                                <span>MIN</span>
+                                <span>SEN</span>
+                                <span>SEL</span>
+                                <span>RAB</span>
+                                <span>KAM</span>
+                                <span>JUM</span>
+                                <span>SAB</span>
+                            </div>
+                            <div class="chart-bars">
+                                <div class="bar" style="height: 60%;">
+                                    <span class="bar-value">IDR 80K</span>
+                                </div>
+                                <div class="bar" style="height: 45%;">
+                                    <span class="bar-value">IDR 60K</span>
+                                </div>
+                                <div class="bar" style="height: 70%;">
+                                    <span class="bar-value">IDR 95K</span>
+                                </div>
+                                <div class="bar" style="height: 50%;">
+                                    <span class="bar-value">IDR 65K</span>
+                                </div>
+                                <div class="bar" style="height: 75%;">
+                                    <span class="bar-value">IDR 100K</span>
+                                </div>
+                                <div class="bar" style="height: 55%;">
+                                    <span class="bar-value">IDR 75K</span>
+                                </div>
+                                <div class="bar" style="height: 80%;">
+                                    <span class="bar-value">IDR 110K</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Loyalty Progress -->
+                <section class="dashboard-panel">
+                    <h3 class="panel-title">[ PROGRESS LOYALITAS ]</h3>
+                    <div class="panel-content">
+                        <div class="loyalty-progress">
+                            <h4>POIN SAAT INI: 4,250</h4>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 70%"></div>
+                            </div>
+                            <div class="progress-milestones">
+                                <div class="milestone passed">
+                                    <span class="milestone-label">1,000 poin</span>
+                                    <span class="milestone-reward">✓ Kopi Gratis</span>
+                                </div>
+                                <div class="milestone passed">
+                                    <span class="milestone-label">2,500 poin</span>
+                                    <span class="milestone-reward">✓ Merchandise</span>
+                                </div>
+                                <div class="milestone active">
+                                    <span class="milestone-label">5,000 poin</span>
+                                    <span class="milestone-reward">🔜 VIP 1 Bulan</span>
+                                </div>
+                            </div>
+                            <p class="milestone-hint">Masih kurang 750 poin untuk reward berikutnya!</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Quick Actions -->
+                <section class="dashboard-panel">
+                    <h3 class="panel-title">[ AKSI CEPAT ]</h3>
+                    <div class="panel-content">
+                        <div class="quick-actions">
+                            <a href="menu.html" class="action-btn">
+                                <span class="action-icon">🛍️</span>
+                                <span>PESAN SEKARANG</span>
+                            </a>
+                            <a href="profile.html" class="action-btn">
+                                <span class="action-icon">👤</span>
+                                <span>EDIT PROFIL</span>
+                            </a>
+                            <button class="action-btn auth-only" onclick="downloadReport()">
+                                <span class="action-icon">📊</span>
+                                <span>LAPORAN</span>
+                            </button>
+                            <button class="action-btn" onclick="contactSupport()">
+                                <span class="action-icon">💬</span>
+                                <span>SUPPORT</span>
+                            </button>
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+
+            <!-- Recent Orders Full View -->
+            <section class="dashboard-panel full-width">
+                <h3 class="panel-title">[ RIWAYAT PESANAN LENGKAP ]</h3>
+                <div class="panel-content">
+                    <div class="orders-table">
+                        <div class="table-header">
+                            <span class="col-date">TANGGAL</span>
+                            <span class="col-id">ID PESANAN</span>
+                            <span class="col-items">ITEM</span>
+                            <span class="col-price">HARGA</span>
+                            <span class="col-status">STATUS</span>
+                            <span class="col-action">AKSI</span>
+                        </div>
+                        <div class="table-body">
+                            <div class="table-row">
+                                <span class="col-date">15 Des 2024</span>
+                                <span class="col-id">#PGC-2024-00151</span>
+                                <span class="col-items">Black Moshpit x2 + Punk Fries</span>
+                                <span class="col-price">IDR 55K</span>
+                                <span class="col-status"><span class="badge completed">SELESAI</span></span>
+                                <span class="col-action"><button class="btn-small" onclick="viewOrderDetail(1)">DETAIL</button></span>
+                            </div>
+                            <div class="table-row">
+                                <span class="col-date">14 Des 2024</span>
+                                <span class="col-id">#PGC-2024-00150</span>
+                                <span class="col-items">Neon Latte + Garage Croissant</span>
+                                <span class="col-price">IDR 45K</span>
+                                <span class="col-status"><span class="badge completed">SELESAI</span></span>
+                                <span class="col-action"><button class="btn-small" onclick="viewOrderDetail(2)">DETAIL</button></span>
+                            </div>
+                            <div class="table-row">
+                                <span class="col-date">12 Des 2024</span>
+                                <span class="col-id">#PGC-2024-00149</span>
+                                <span class="col-items">Overdose Mocha x3</span>
+                                <span class="col-price">IDR 78K</span>
+                                <span class="col-status"><span class="badge completed">SELESAI</span></span>
+                                <span class="col-action"><button class="btn-small" onclick="viewOrderDetail(3)">DETAIL</button></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2024 PG STREET COFFEE. All Rights Reserved. ANARKIS DAN PEMBERONTAK.</p>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
+    <script>
+        // Proteksi akses halaman dashboard jika belum login.
+        document.addEventListener('DOMContentLoaded', () => {
+            const isLoggedIn = localStorage.getItem('punkLoggedIn') === 'true';
+            if (!isLoggedIn) {
+                window.location.href = 'index.html';
+                return;
+            }
+
+            // helper
+            function downloadReport() {
+                alert('📊 LAPORAN DIUNDUH!\nFile laporan konsumsi kafein Anda siap.');
+            }
+
+            function contactSupport() {
+                alert('💬 HUBUNGI SUPPORT\nRedirecting to contact page...');
+                window.location.href = 'contact.html';
+            }
+
+            function viewOrderDetail(orderId) {
+                alert(`📦 DETAIL PESANAN #PGC-2024-0015${orderId}\nImplementasi detail view diperlukan.`);
+            }
+
+            const navLinks = document.querySelectorAll('.nav-links a');
+            navLinks.forEach(link => {
+                link.classList.remove('active-page');
+                if (link.href.includes('dashboard.html')) {
+                    link.classList.add('active-page');
+                }
+            });
+
+            window.downloadReport = downloadReport;
+            window.contactSupport = contactSupport;
+            window.viewOrderDetail = viewOrderDetail;
+        });
+    </script>
+</body>
+</html>

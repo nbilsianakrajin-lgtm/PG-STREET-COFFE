@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PG STREET COFFEE</title>
+    <title>GALLERY - PG STREET COFFEE</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -14,9 +14,9 @@
         <div class="nav-logo">PG <span>STREET COFFEE</span></div>
         
         <ul class="nav-links" id="nav-links-container">
-            <li><a href="index.html" class="active-page">HOME</a></li>
+            <li><a href="index.html">HOME</a></li>
             <li><a href="menu.html">THE FUEL</a></li>
-            <li><a href="gallery.html">GALLERY</a></li>
+            <li><a href="gallery.html" class="active-page">GALLERY</a></li>
             <li><a href="about.html">OUR RIOT</a></li>
             <li><a href="contact.html">CONTACT</a></li>
             <li class="auth-only hidden"><a href="dashboard.html">DASHBOARD</a></li>
@@ -33,47 +33,40 @@
         </div>
     </nav>
 
-    <header class="hero">
-        <div class="hero-content">
-            <h1 class="brand-logo">PG <span>STREET COFFEE</span></h1>
-            <div class="tagline">HIGH CAFFEINE // NO RULES</div>
-            <p class="sub-tagline">
-                Kami tidak menyeduh kopi instan untuk kaum borjuis. Kami meracik bahan bakar murni 
-                berenergi tinggi langsung dari aspal jalanan kota untuk menjaga Anda tetap terjaga 
-                menembus rotasi sistem malam yang anarkis.
-            </p>
-            <div class="hero-buttons">
-                <a href="menu.html" class="btn-punk">ISI BENSINMU (VIEW MENU)</a>
-                <a href="about.html" class="btn-punk-outline">BACA MANIFESTO</a>
-            </div>
-        </div>
+    <header class="page-header">
+        <h1 class="page-title">STREET <span>VISUALS</span></h1>
+        <p class="page-subtitle">
+            Dokumentasi mentah dan atmosfer distorsi pergerakan sub-kultur bawah tanah kami langsung dari aspal jalanan kota.
+        </p>
     </header>
 
-    <section class="highlight-section">
-        <h2 class="section-title">WHY WE <span>RIOT?</span></h2>
-        
-        <div class="highlight-grid">
-            <div class="highlight-card">
-                <span class="card-tag">[ CODE.01 ]</span>
-                <h3>BIJI KOPI ILEGAL</h3>
-                <p>Dipasok langsung dari petani lokal independen secara gerilya tanpa melalui tengkulak korporat skala besar.</p>
+    <main class="gallery-container">
+        <div class="gallery-grid">
+            
+            <div class="gallery-item">
+                <img src="image/galery1.jpg" alt="Espresso Bar" loading="lazy">
+                <div class="gallery-desc">[ SHOT.01 ] RACIKAN KAFFEINE LIAR</div>
             </div>
 
-            <div class="highlight-card">
-                <span class="card-tag">[ CODE.02 ]</span>
-                <h3>OVERDOSE KAFEIN</h3>
-                <p>Ekstraksi keras takaran ganda standar jalanan. Menjamin pasokan fokus Anda bertahan hingga fajar tiba.</p>
+            <div class="gallery-item">
+                <img src="image/galery2.jpg" alt="Punk Coffee Spot" loading="lazy">
+                <div class="gallery-desc">[ SHOT.02 ] MARKAS GERILYA UNDERGROUND</div>
             </div>
 
-            <div class="highlight-card">
-                <span class="card-tag">[ CODE.03 ]</span>
-                <h3>MARKAS BEBAS</h3>
-                <p>Tanpa stopkontak tersembunyi atau Wi-Fi lambat. Hanya ada distorsi musik keras dan obrolan bawah tanah.</p>
+            <div class="gallery-item">
+                <img src="image/galery3.jpg" alt="Late Night Rebel" loading="lazy">
+                <div class="gallery-desc">[ SHOT.03 ] SQUAD PETARUNG MALAM</div>
             </div>
+
+            <div class="gallery-item">
+                <img src="image/galery4.jpg" alt="Street Drip" loading="lazy">
+                <div class="gallery-desc">[ SHOT.04 ] INJEKSI FILTER ASPAL JALANAN</div>
+            </div>
+
         </div>
-    </section>
+    </main>
 
-    <div class="auth-modal" id="auth-modal">
+<div class="auth-modal" id="auth-modal">
         <div class="modal-box">
             <button class="close-btn" id="close-auth">&times;</button>
             
@@ -112,6 +105,23 @@
                 </form>
                 <p class="switch-text">Sudah punya ID? <a href="#" id="to-login">Kembali Login</a></p>
             </div>
+        </div>
+    </div>
+
+    <div class="auth-modal" id="cart-modal">
+        <div class="modal-box" style="border-color: #ff007f; box-shadow: 10px 10px 0px #39ff14;">
+            <button class="close-btn" id="close-cart">&times;</button>
+            <h2 class="modal-title" style="margin-bottom: 20px;">YOUR <span>ORDERS</span></h2>
+            
+            <div id="cart-items-container" style="max-height: 240px; overflow-y: auto; margin-bottom: 20px;">
+                </div>
+
+            <div style="display: flex; justify-content: space-between; border-top: 2px dashed #222; padding-top: 15px; margin-bottom: 25px; font-size: 1.2rem;">
+                <span>TOTAL BELANJA:</span>
+                <span id="cart-total-price" style="color: #39ff14;">IDR 0K</span>
+            </div>
+
+            <button id="btn-next-checkout" class="btn-punk btn-block">LANJUT KE PEMBAYARAN</button>
         </div>
     </div>
 
@@ -175,6 +185,7 @@
             <button id="btn-checkout-punk" class="btn-punk btn-block" style="background-color: #39ff14; color: #000; border-color: #ff007f;">KONFIRMASI & BAYAR</button>
         </div>
     </div>
+
 
     <footer>
         <p>&copy; 2026 PG STREET COFFEE - NO RULES, JUST CAFFEINE.</p>
