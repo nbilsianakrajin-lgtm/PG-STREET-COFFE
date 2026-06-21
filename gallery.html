@@ -10,9 +10,7 @@
 
     <nav class="navbar">
         <button id="hamburger-menu" class="hamburger">&#9776;</button>
-
         <div class="nav-logo">PG <span>STREET COFFEE</span></div>
-        
         <ul class="nav-links" id="nav-links-container">
             <li><a href="index.html">HOME</a></li>
             <li><a href="menu.html">THE FUEL</a></li>
@@ -22,62 +20,53 @@
             <li class="auth-only hidden"><a href="dashboard.html">DASHBOARD</a></li>
             <li class="auth-only hidden"><a href="profile.html">PROFILE</a></li>
         </ul>
-        
         <div class="nav-actions">
             <a href="#" id="cart-trigger" class="cart-punk-link auth-only">
                 <span class="cart-punk-icon">🛒</span>
                 <span id="cart-count" class="cart-punk-badge">0</span>
             </a>
-
             <button id="auth-trigger" class="btn-nav">MEMBER SIGN-IN</button>
         </div>
     </nav>
 
     <header class="page-header">
         <h1 class="page-title">STREET <span>VISUALS</span></h1>
-        <p class="page-subtitle">
-            Dokumentasi mentah dan atmosfer distorsi pergerakan sub-kultur bawah tanah kami langsung dari aspal jalanan kota.
-        </p>
+        <p class="page-subtitle">Dokumentasi mentah dan atmosfer distorsi pergerakan sub-kultur bawah tanah kami langsung dari aspal jalanan kota.</p>
     </header>
 
     <main class="gallery-container">
         <div class="gallery-grid">
-            
             <div class="gallery-item">
                 <img src="image/galery1.jpg" alt="Espresso Bar" loading="lazy">
                 <div class="gallery-desc">[ SHOT.01 ] RACIKAN KAFFEINE LIAR</div>
             </div>
-
             <div class="gallery-item">
                 <img src="image/galery2.jpg" alt="Punk Coffee Spot" loading="lazy">
                 <div class="gallery-desc">[ SHOT.02 ] MARKAS GERILYA UNDERGROUND</div>
             </div>
-
             <div class="gallery-item">
                 <img src="image/galery3.jpg" alt="Late Night Rebel" loading="lazy">
                 <div class="gallery-desc">[ SHOT.03 ] SQUAD PETARUNG MALAM</div>
             </div>
-
             <div class="gallery-item">
                 <img src="image/galery4.jpg" alt="Street Drip" loading="lazy">
                 <div class="gallery-desc">[ SHOT.04 ] INJEKSI FILTER ASPAL JALANAN</div>
             </div>
-
         </div>
     </main>
 
-<div class="auth-modal" id="auth-modal">
+    <!-- AUTH MODAL -->
+    <div class="auth-modal" id="auth-modal">
         <div class="modal-box">
             <button class="close-btn" id="close-auth">&times;</button>
-            
             <div id="login-form-wrapper">
                 <h2 class="modal-title">SQUAD <span>SIGN-IN</span></h2>
                 <form id="login-form">
-                    <div class="input-group" style="margin-bottom: 15px;">
+                    <div class="input-group">
                         <label>SQUAD EMAIL</label>
                         <input type="email" required placeholder="rebel@cyber.com">
                     </div>
-                    <div class="input-group" style="margin-bottom: 25px;">
+                    <div class="input-group">
                         <label>PASSWORD SECURITY</label>
                         <input type="password" required placeholder="••••••••">
                     </div>
@@ -85,19 +74,18 @@
                 </form>
                 <p class="switch-text">Belum terdaftar? <a href="#" id="to-register">Buat ID Rebel Baru</a></p>
             </div>
-
             <div id="register-form-wrapper" class="hidden">
                 <h2 class="modal-title">CREATE <span>REBEL ID</span></h2>
                 <form id="register-form">
-                    <div class="input-group" style="margin-bottom: 15px;">
+                    <div class="input-group">
                         <label>NAMA ALIAS (NICKNAME)</label>
                         <input type="text" required placeholder="X-Graffiti-X">
                     </div>
-                    <div class="input-group" style="margin-bottom: 15px;">
+                    <div class="input-group">
                         <label>SQUAD EMAIL</label>
                         <input type="email" required placeholder="rebel@cyber.com">
                     </div>
-                    <div class="input-group" style="margin-bottom: 25px;">
+                    <div class="input-group">
                         <label>PASSWORD SECURITY</label>
                         <input type="password" required placeholder="••••••••">
                     </div>
@@ -108,91 +96,68 @@
         </div>
     </div>
 
+    <!-- CART MODAL -->
     <div class="auth-modal" id="cart-modal">
         <div class="modal-box" style="border-color: #ff007f; box-shadow: 10px 10px 0px #39ff14;">
             <button class="close-btn" id="close-cart">&times;</button>
-            <h2 class="modal-title" style="margin-bottom: 20px;">YOUR <span>ORDERS</span></h2>
-            
-            <div id="cart-items-container" style="max-height: 240px; overflow-y: auto; margin-bottom: 20px;">
-                </div>
-
+            <h2 class="modal-title">YOUR <span>ORDERS</span></h2>
+            <div id="cart-items-container" style="max-height: 240px; overflow-y: auto; margin-bottom: 20px;"></div>
             <div style="display: flex; justify-content: space-between; border-top: 2px dashed #222; padding-top: 15px; margin-bottom: 25px; font-size: 1.2rem;">
                 <span>TOTAL BELANJA:</span>
                 <span id="cart-total-price" style="color: #39ff14;">IDR 0K</span>
             </div>
-
             <button id="btn-next-checkout" class="btn-punk btn-block">LANJUT KE PEMBAYARAN</button>
         </div>
     </div>
 
-    <div class="auth-modal" id="cart-modal">
-        <div class="modal-box" style="border-color: #ff007f; box-shadow: 10px 10px 0px #39ff14;">
-            <button class="close-btn" id="close-cart">&times;</button>
-            <h2 class="modal-title" style="margin-bottom: 20px;">YOUR <span>ORDERS</span></h2>
-            
-            <div id="cart-items-container" style="max-height: 240px; overflow-y: auto; margin-bottom: 20px;">
-                </div>
-
-            <div style="display: flex; justify-content: space-between; border-top: 2px dashed #222; padding-top: 15px; margin-bottom: 25px; font-size: 1.2rem;">
-                <span>TOTAL BELANJA:</span>
-                <span id="cart-total-price" style="color: #39ff14;">IDR 0K</span>
-            </div>
-
-            <button id="btn-next-checkout" class="btn-punk btn-block">LANJUT KE PEMBAYARAN</button>
-        </div>
-    </div>
-
+    <!-- CHECKOUT MODAL -->
     <div class="auth-modal" id="checkout-modal">
         <div class="modal-box" style="border-color: #39ff14; box-shadow: 10px 10px 0px #ff007f;">
             <button class="close-btn" id="close-checkout">&times;</button>
-            <h2 class="modal-title" style="margin-bottom: 25px;">PILIH <span>PAYMENT</span></h2>
-            
+            <h2 class="modal-title">PILIH <span>PAYMENT</span></h2>
             <div style="margin-bottom: 30px;">
                 <div class="method-group-punk">
                     <label class="method-option">
                         <input type="radio" name="punk-pay" value="qris" checked>
                         <div class="method-card">
-                            <span class="method-icon" style="font-size: 1.2rem;">� QR</span>
+                            <span class="method-icon">📱 QR</span>
                             <div class="method-text">
-                                <h4 style="font-size: 0.9rem;">QRIS</h4>
-                                <p style="font-size: 0.7rem;">Pindai QR untuk pembayaran cepat.</p>
+                                <h4>QRIS</h4>
+                                <p>Pindai QR untuk pembayaran cepat.</p>
                             </div>
                         </div>
                     </label>
                     <label class="method-option">
                         <input type="radio" name="punk-pay" value="bank">
                         <div class="method-card">
-                            <span class="method-icon" style="font-size: 1.2rem;">🏦</span>
+                            <span class="method-icon">🏦</span>
                             <div class="method-text">
-                                <h4 style="font-size: 0.9rem;">TRANSFER BANK</h4>
-                                <p style="font-size: 0.7rem;">Instruksi transfer dan nomor rekening akan ditampilkan.</p>
+                                <h4>TRANSFER BANK</h4>
+                                <p>Instruksi transfer dan nomor rekening akan ditampilkan.</p>
                             </div>
                         </div>
                     </label>
                     <label class="method-option">
                         <input type="radio" name="punk-pay" value="cod">
                         <div class="method-card">
-                            <span class="method-icon" style="font-size: 1.2rem;">💵</span>
+                            <span class="method-icon">💵</span>
                             <div class="method-text">
-                                <h4 style="font-size: 0.9rem;">CASH ON DELIVERY</h4>
-                                <p style="font-size: 0.7rem;">Bayar tunai di tempat kurir.</p>
+                                <h4>CASH ON DELIVERY</h4>
+                                <p>Bayar tunai di tempat kurir.</p>
                             </div>
                         </div>
                     </label>
                 </div>
             </div>
-
             <button id="btn-checkout-punk" class="btn-punk btn-block" style="background-color: #39ff14; color: #000; border-color: #ff007f;">KONFIRMASI & BAYAR</button>
         </div>
     </div>
-
 
     <footer>
         <p>&copy; 2026 PG STREET COFFEE - NO RULES, JUST CAFFEINE.</p>
     </footer>
 
     <div id="toast-container" class="toast-container"></div>
-
     <script src="main.js"></script>
 </body>
 </html>

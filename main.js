@@ -1,14 +1,14 @@
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", function() {
+
     // ==========================================================================
-    // 0. PERSISTENT AUTH STATE (Mengingat Status Login Saat Pindah Halaman)
+    // 0. PERSISTENT AUTH STATE
     // ==========================================================================
-    let isLoggedIn = localStorage.getItem("punkLoggedIn") === "true"; 
+    let isLoggedIn = localStorage.getItem("punkLoggedIn") === "true";
 
     // ==========================================================================
     // 1. DATA MASTER PRODUK (20 VARIASI MENU)
     // ==========================================================================
-    const products = [
-        // COFFEE BASE (8 MENU)
+    var products = [
         { id: 1, name: "STREET ESPRESSO", price: 18, category: "coffee", desc: "Ekstraksi murni biji kopi lokal berkadar kafein tinggi.", img: "image/1.jpg" },
         { id: 2, name: "BLACK MOSHPIT", price: 20, category: "coffee", desc: "Americano dingin tanpa gula, pahit dan keras bak lantai dansa.", img: "image/2.jpg" },
         { id: 3, name: "NEON LATTE", price: 25, category: "coffee", desc: "Es kopi susu dengan pemanis gula aren rahasia markas.", img: "image/3.jpg" },
@@ -17,16 +17,12 @@ document.addEventListener("DOMContentLoaded", () => {
         { id: 6, name: "ANARCHY COLD BREW", price: 25, category: "coffee", desc: "Kopi seduh dingin hasil ekstraksi gerilya selama 12 jam.", img: "image/6.jpg" },
         { id: 7, name: "RIZLA MAZZAGRAN", price: 27, category: "coffee", desc: "Perpaduan unik espresso dingin dengan kesegaran perasan lemon.", img: "image/7.jpg" },
         { id: 8, name: "AFFOGATO REBEL", price: 23, category: "coffee", desc: "Satu skup es krim vanila disiram espresso panas yang membakar.", img: "image/8.jpg" },
-
-        // NON-COFFEE (6 MENU)
         { id: 9, name: "FUCHSIA MATCHA", price: 24, category: "noncoffee", desc: "Greentea murni tanpa kopi dengan susu segar pilihan.", img: "image/9.jpg" },
         { id: 10, name: "CYBER CHOCOLATE", price: 22, category: "noncoffee", desc: "Cokelat pekat jalanan premium, disajikan dingin atau panas.", img: "image/10.jpg" },
         { id: 11, name: "RED GRAFFITI", price: 23, category: "noncoffee", desc: "Susu red velvet lembut dengan sensasi manis gurih merata.", img: "image/11.jpg" },
         { id: 12, name: "TAROT SYSTEM", price: 23, category: "noncoffee", desc: "Minuman rasa taro (talas) manis legit penenang pikiran.", img: "image/12.jpg" },
         { id: 13, name: "LEMON INTERCEPT", price: 18, category: "noncoffee", desc: "Teh lemon segar peretas dahaga cuaca panas aspal kota.", img: "image/13.jpg" },
         { id: 14, name: "ASPHALT MILKSHAKE", price: 25, category: "noncoffee", desc: "Milkshake vanilla dengan taburan biskuit Oreo hancur.", img: "image/14.jpg" },
-
-        // STREET SNACKS (6 MENU)
         { id: 15, name: "PUNK FRIES", price: 17, category: "snack", desc: "Kentang goreng renyah ditaburi bumbu pedas berdistorsi.", img: "image/15.jpg" },
         { id: 16, name: "GARAGE CROISSANT", price: 20, category: "snack", desc: "Pastry mentega renyah pas buat teman minum espresso panas.", img: "image/16.jpg" },
         { id: 17, name: "RIOT CHURROS", price: 18, category: "snack", desc: "Camilan goreng spanyol dengan cocolan saus cokelat pekat.", img: "image/17.jpg" },
@@ -35,42 +31,38 @@ document.addEventListener("DOMContentLoaded", () => {
         { id: 20, name: "SQUAD COOKIES", price: 15, category: "snack", desc: "Kue kering panggang dengan serpihan cokelat manis meleleh.", img: "image/20.jpg" }
     ];
 
-    const bestSellers = [2, 3, 5, 9, 15];
+    var bestSellers = [2, 3, 5, 9, 15];
 
     // ==========================================================================
-    // 2. SISTEM MOBILE HAMBURGER MENU
+    // 2. HAMBURGER MENU
     // ==========================================================================
-    const hamburgerMenu = document.getElementById("hamburger-menu");
-    const navLinksContainer = document.getElementById("nav-links-container");
-
+    var hamburgerMenu = document.getElementById("hamburger-menu");
+    var navLinksContainer = document.getElementById("nav-links-container");
     if (hamburgerMenu && navLinksContainer) {
-        hamburgerMenu.addEventListener("click", () => {
+        hamburgerMenu.addEventListener("click", function() {
             navLinksContainer.classList.toggle("show");
         });
     }
 
     // ==========================================================================
-    // 3. RENDER PRODUK DAN FILTER SIDEBAR (KHUSUS HALAMAN MENU)
+    // 3. RENDER MENU
     // ==========================================================================
-    const menuGrid = document.getElementById("menu-grid");
-    const tabButtons = document.querySelectorAll(".menu-sidebar .tab-btn");
+    var menuGrid = document.getElementById("menu-grid");
+    var tabButtons = document.querySelectorAll(".menu-sidebar .tab-btn");
 
     function displayProducts(categoryFilter) {
-        if (!menuGrid) return; 
-        
+        if (!menuGrid) return;
         menuGrid.innerHTML = "";
-        let filtered = [];
-
+        var filtered = [];
         if (categoryFilter === "all") {
             filtered = products;
         } else if (categoryFilter === "best") {
-            filtered = products.filter(p => bestSellers.includes(p.id));
+            filtered = products.filter(function(p) { return bestSellers.indexOf(p.id) !== -1; });
         } else {
-            filtered = products.filter(p => p.category === categoryFilter);
+            filtered = products.filter(function(p) { return p.category === categoryFilter; });
         }
-
-        filtered.forEach(product => {
-            const card = document.createElement("div");
+        filtered.forEach(function(product) {
+            var card = document.createElement("div");
             card.className = "menu-item-card";
             card.innerHTML = `
                 <div class="menu-img-box">
@@ -87,17 +79,15 @@ document.addEventListener("DOMContentLoaded", () => {
             `;
             menuGrid.appendChild(card);
         });
-
         initAddToCartButtons();
     }
 
     if (tabButtons.length > 0) {
-        tabButtons.forEach(button => {
-            button.addEventListener("click", () => {
-                tabButtons.forEach(btn => btn.classList.remove("active"));
+        tabButtons.forEach(function(button) {
+            button.addEventListener("click", function() {
+                tabButtons.forEach(function(btn) { btn.classList.remove("active"); });
                 button.classList.add("active");
-                
-                const selectedCategory = button.getAttribute("data-category");
+                var selectedCategory = button.getAttribute("data-category");
                 displayProducts(selectedCategory);
             });
         });
@@ -105,24 +95,21 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // ==========================================================================
-    // 4. INTERAKTIF POP-UP LOGIN / REGISTER SQUAD & LOGOUT MANAGEMENT
+    // 4. AUTH SYSTEM
     // ==========================================================================
-    const authTrigger = document.getElementById("auth-trigger");
-    const authModal = document.getElementById("auth-modal");
-    const closeAuth = document.getElementById("close-auth");
-    
-    const loginWrapper = document.getElementById("login-form-wrapper");
-    const registerWrapper = document.getElementById("register-form-wrapper");
-    const toRegisterLink = document.getElementById("to-register");
-    const toLoginLink = document.getElementById("to-login");
-
-    const loginForm = document.getElementById("login-form");
-    const registerForm = document.getElementById("register-form");
-
-    const authOnlyNavItems = document.querySelectorAll(".auth-only");
+    var authTrigger = document.getElementById("auth-trigger");
+    var authModal = document.getElementById("auth-modal");
+    var closeAuth = document.getElementById("close-auth");
+    var loginWrapper = document.getElementById("login-form-wrapper");
+    var registerWrapper = document.getElementById("register-form-wrapper");
+    var toRegisterLink = document.getElementById("to-register");
+    var toLoginLink = document.getElementById("to-login");
+    var loginForm = document.getElementById("login-form");
+    var registerForm = document.getElementById("register-form");
+    var authOnlyNavItems = document.querySelectorAll(".auth-only");
 
     function syncAuthNav() {
-        authOnlyNavItems.forEach(item => {
+        authOnlyNavItems.forEach(function(item) {
             if (isLoggedIn) {
                 item.classList.remove("hidden");
             } else {
@@ -130,46 +117,42 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         });
         if (authTrigger) {
-            authTrigger.textContent = isLoggedIn ? "SQUAD LOGOUT" : "MEMBER SIGN-IN";
+            authTrigger.textContent = isLoggedIn ? "🚪 LOGOUT" : "MEMBER SIGN-IN";
         }
     }
 
-    // Menyesuaikan teks tombol dan menu navbar saat pertama kali halaman dimuat berdasarkan memori browser
     syncAuthNav();
 
     if (authTrigger && authModal && closeAuth) {
-        authTrigger.addEventListener("click", () => {
+        authTrigger.addEventListener("click", function() {
             if (isLoggedIn) {
-                // Jalankan fungsi logout murni
                 isLoggedIn = false;
-                localStorage.removeItem("punkLoggedIn"); // Hapus status dari browser
+                localStorage.removeItem("punkLoggedIn");
                 syncAuthNav();
                 showPunkToast("🔒 ID SQUAD BERHASIL LOGOUT.");
-                
-                // Bersihkan keranjang belanja demi keamanan privasi akun
                 cart = [];
                 localStorage.removeItem("punkCart");
                 updateCartSystem();
-
-                const currentPath = window.location.pathname.toLowerCase();
-                if (currentPath.endsWith('dashboard.html') || currentPath.endsWith('profile.html')) {
+                var currentPath = window.location.pathname.toLowerCase();
+                if (currentPath.indexOf('dashboard.html') !== -1 || currentPath.indexOf('profile.html') !== -1) {
                     window.location.href = 'index.html';
                 }
             } else {
                 authModal.classList.add("show");
             }
         });
-        closeAuth.addEventListener("click", () => authModal.classList.remove("show"));
+        closeAuth.addEventListener("click", function() {
+            authModal.classList.remove("show");
+        });
     }
 
     if (toRegisterLink && toLoginLink) {
-        toRegisterLink.addEventListener("click", (e) => {
+        toRegisterLink.addEventListener("click", function(e) {
             e.preventDefault();
             loginWrapper.classList.add("hidden");
             registerWrapper.classList.remove("hidden");
         });
-
-        toLoginLink.addEventListener("click", (e) => {
+        toLoginLink.addEventListener("click", function(e) {
             e.preventDefault();
             registerWrapper.classList.add("hidden");
             loginWrapper.classList.remove("hidden");
@@ -177,24 +160,24 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     if (loginForm) {
-        loginForm.addEventListener("submit", (e) => {
+        loginForm.addEventListener("submit", function(e) {
             e.preventDefault();
-            isLoggedIn = true; 
-            localStorage.setItem("punkLoggedIn", "true"); // Menyimpan status login permanen ke browser
-            syncAuthNav(); // Update navbar untuk menampilkan DASHBOARD & PROFILE
+            isLoggedIn = true;
+            localStorage.setItem("punkLoggedIn", "true");
+            syncAuthNav();
             showPunkToast("🔓 ACCESS GRANTED. SELAMAT DATANG REBEL!");
-            if (authTrigger) authTrigger.textContent = "SQUAD LOGOUT";
+            if (authTrigger) authTrigger.textContent = "🚪 LOGOUT";
             authModal.classList.remove("show");
             loginForm.reset();
         });
     }
 
     if (registerForm) {
-        registerForm.addEventListener("submit", (e) => {
+        registerForm.addEventListener("submit", function(e) {
             e.preventDefault();
             isLoggedIn = true;
             localStorage.setItem("punkLoggedIn", "true");
-            syncAuthNav(); // Update navbar untuk menampilkan DASHBOARD & PROFILE
+            syncAuthNav();
             showPunkToast("💾 SQUAD ID BARU BERHASIL DI-DEPOSIT! SELAMAT BERGABUNG!");
             registerWrapper.classList.add("hidden");
             loginWrapper.classList.remove("hidden");
@@ -203,42 +186,35 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // ==========================================================================
-    // 5. SISTEM MANAGEMEN KERANJANG BELANJA & INTEGRASI BLOKIR AKSES
+    // 5. CART SYSTEM
     // ==========================================================================
-    let cart = JSON.parse(localStorage.getItem("punkCart")) || [];
-    
-    const cartTrigger = document.getElementById("cart-trigger");
-    const cartModal = document.getElementById("cart-modal");
-    const closeCart = document.getElementById("close-cart");
-    const cartItemsContainer = document.getElementById("cart-items-container");
-    const cartTotalPrice = document.getElementById("cart-total-price");
-    const cartCountBadge = document.getElementById("cart-count");
-
-    const checkoutModal = document.getElementById("checkout-modal");
-    const closeCheckout = document.getElementById("close-checkout");
-    const btnNextCheckout = document.getElementById("btn-next-checkout");
-    const btnCheckout = document.getElementById("btn-checkout-punk");
+    var cart = JSON.parse(localStorage.getItem("punkCart")) || [];
+    var cartTrigger = document.getElementById("cart-trigger");
+    var cartModal = document.getElementById("cart-modal");
+    var closeCart = document.getElementById("close-cart");
+    var cartItemsContainer = document.getElementById("cart-items-container");
+    var cartTotalPrice = document.getElementById("cart-total-price");
+    var cartCountBadge = document.getElementById("cart-count");
+    var checkoutModal = document.getElementById("checkout-modal");
+    var closeCheckout = document.getElementById("close-checkout");
+    var btnNextCheckout = document.getElementById("btn-next-checkout");
+    var btnCheckout = document.getElementById("btn-checkout-punk");
 
     function updateCartSystem() {
         if (cartCountBadge) {
-            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+            var totalItems = 0;
+            cart.forEach(function(item) { totalItems += item.quantity; });
             cartCountBadge.textContent = totalItems;
         }
-
         if (cartItemsContainer && cartTotalPrice) {
             cartItemsContainer.innerHTML = "";
-            let totalCost = 0;
-
+            var totalCost = 0;
             if (cart.length === 0) {
-                cartItemsContainer.innerHTML = `
-                    <p style="font-family:'Courier New', monospace; text-align:center; color:#666; padding: 40px 0;">
-                        Keranjang kosong.<br>Injeksi bensinmu sekarang!
-                    </p>`;
+                cartItemsContainer.innerHTML = '<p style="font-family:\'Courier New\', monospace; text-align:center; color:#666; padding: 40px 0;">Keranjang kosong.<br>Injeksi bensinmu sekarang!</p>';
             } else {
-                cart.forEach((item, index) => {
+                cart.forEach(function(item, index) {
                     totalCost += (item.price * item.quantity);
-                    
-                    const itemRow = document.createElement("div");
+                    var itemRow = document.createElement("div");
                     itemRow.className = "cart-item-row";
                     itemRow.innerHTML = `
                         <div class="cart-item-info">
@@ -250,12 +226,12 @@ document.addEventListener("DOMContentLoaded", () => {
                     cartItemsContainer.appendChild(itemRow);
                 });
             }
-            cartTotalPrice.textContent = `IDR ${totalCost}K`;
+            cartTotalPrice.textContent = "IDR " + totalCost + "K";
         }
     }
 
     if (cartTrigger && cartModal) {
-        cartTrigger.addEventListener("click", (e) => {
+        cartTrigger.addEventListener("click", function(e) {
             e.preventDefault();
             cartModal.classList.add("show");
             updateCartSystem();
@@ -263,19 +239,19 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     if (closeCart && cartModal) {
-        closeCart.addEventListener("click", () => {
+        closeCart.addEventListener("click", function() {
             cartModal.classList.remove("show");
         });
     }
 
     if (closeCheckout && checkoutModal) {
-        closeCheckout.addEventListener("click", () => {
+        closeCheckout.addEventListener("click", function() {
             checkoutModal.classList.remove("show");
         });
     }
 
     if (btnNextCheckout) {
-        btnNextCheckout.addEventListener("click", () => {
+        btnNextCheckout.addEventListener("click", function() {
             if (cart.length === 0) {
                 showPunkToast("❌ KERANJANG MASIH KOSONG, REBEL!");
                 return;
@@ -286,9 +262,9 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     if (cartItemsContainer) {
-        cartItemsContainer.addEventListener("click", (e) => {
+        cartItemsContainer.addEventListener("click", function(e) {
             if (e.target.classList.contains("btn-remove-cart")) {
-                const targetIndex = parseInt(e.target.getAttribute("data-index"));
+                var targetIndex = parseInt(e.target.getAttribute("data-index"));
                 cart.splice(targetIndex, 1);
                 localStorage.setItem("punkCart", JSON.stringify(cart));
                 updateCartSystem();
@@ -297,86 +273,88 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // FUNGSI BLOKIR BELANJA KONSUMEN JIKA BELUM LOGIN
     function initAddToCartButtons() {
-        const addButtons = document.querySelectorAll(".btn-add-cart");
-        addButtons.forEach(button => {
-            button.addEventListener("click", () => {
-                
-                // Validasi kritikal berbasis localStorage state
+        var addButtons = document.querySelectorAll(".btn-add-cart");
+        addButtons.forEach(function(button) {
+            button.addEventListener("click", function() {
                 if (!isLoggedIn) {
                     showPunkToast("❌ KONTROL: LOGIN / DAFTAR SQUAD TERLEBIH DAHULU!");
                     if (authModal) authModal.classList.add("show");
-                    return; 
+                    return;
                 }
-
-                const productId = parseInt(button.getAttribute("data-id"));
-                const selectedProduct = products.find(p => p.id === productId);
-
+                var productId = parseInt(button.getAttribute("data-id"));
+                var selectedProduct = null;
+                for (var i = 0; i < products.length; i++) {
+                    if (products[i].id === productId) {
+                        selectedProduct = products[i];
+                        break;
+                    }
+                }
                 if (selectedProduct) {
-                    const existingItem = cart.find(item => item.id === productId);
+                    var existingItem = null;
+                    for (var j = 0; j < cart.length; j++) {
+                        if (cart[j].id === productId) {
+                            existingItem = cart[j];
+                            break;
+                        }
+                    }
                     if (existingItem) {
                         existingItem.quantity += 1;
                     } else {
-                        cart.push({ ...selectedProduct, quantity: 1 });
+                        var newItem = {
+                            id: selectedProduct.id,
+                            name: selectedProduct.name,
+                            price: selectedProduct.price,
+                            quantity: 1,
+                            img: selectedProduct.img
+                        };
+                        cart.push(newItem);
                     }
-
                     localStorage.setItem("punkCart", JSON.stringify(cart));
                     updateCartSystem();
-                    showPunkToast(`🛒 ${selectedProduct.name} BERHASIL DIINJEKSI SEBAGAI PESANAN!`);
+                    showPunkToast("🛒 " + selectedProduct.name + " BERHASIL DIINJEKSI SEBAGAI PESANAN!");
                 }
             });
         });
     }
 
     if (btnCheckout) {
-        btnCheckout.addEventListener("click", () => {
-            const selected = document.querySelector('input[name="punk-pay"]:checked');
-            const method = selected ? selected.value : 'cod';
-
-            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-            const receiptId = 'PGR-' + Date.now().toString(36).toUpperCase().slice(-8);
-
-            const receipt = {
-                receiptId,
+        btnCheckout.addEventListener("click", function() {
+            var selected = document.querySelector('input[name="punk-pay"]:checked');
+            var method = selected ? selected.value : 'cod';
+            var total = 0;
+            cart.forEach(function(item) { total += (item.price * item.quantity); });
+            var receiptId = 'PGR-' + Date.now().toString(36).toUpperCase().slice(-8);
+            var receipt = {
+                receiptId: receiptId,
                 createdAt: Date.now(),
-                method,
-                items: cart.map(i => ({ id: i.id, name: i.name, price: i.price, quantity: i.quantity, img: i.img })),
-                total,
+                method: method,
+                items: cart.map(function(i) { return { id: i.id, name: i.name, price: i.price, quantity: i.quantity, img: i.img }; }),
+                total: total,
                 status: 'pending'
             };
-
-            // Jika metode QRIS, tambahkan URL gambar QR untuk simulasi
             if (method === 'qris') {
-                const qrData = `Nota:${receiptId}|Total:IDR${total}K`;
-                receipt.paymentQr = `https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=${encodeURIComponent(qrData)}`;
+                var qrData = 'Nota:' + receiptId + '|Total:IDR' + total + 'K';
+                receipt.paymentQr = 'https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=' + encodeURIComponent(qrData);
                 showPunkToast('🔗 SILAKAN PINDAI QRIS pada layar nota.');
             } else if (method === 'bank') {
                 receipt.bankInfo = 'BCA 123-456-789 a.n. PG STREET COFFEE';
                 showPunkToast('🏦 Instruksi transfer tersimpan di nota (simulasi).');
             } else {
-                // COD
                 showPunkToast('💵 COD: Siapkan pembayaran tunai saat kurir tiba.');
             }
-
-            // Simpan nota terakhir agar bisa ditampilkan di halaman nota
             localStorage.setItem('punkLastReceipt', JSON.stringify(receipt));
-
-            // Kosongkan keranjang dan update storage
             cart = [];
             localStorage.removeItem('punkCart');
             updateCartSystem();
-
             if (checkoutModal) checkoutModal.classList.remove('show');
-
-            // Show receipt as popup
-            setTimeout(() => {
-                showReceiptPopup(receipt);
-            }, 350);
+            setTimeout(function() {
+                window.location.href = 'receipt.html';
+            }, 500);
         });
     }
 
-    window.addEventListener("click", (e) => {
+    window.addEventListener("click", function(e) {
         if (e.target === authModal) authModal.classList.remove("show");
         if (e.target === cartModal) cartModal.classList.remove("show");
         if (e.target === checkoutModal) checkoutModal.classList.remove("show");
@@ -384,95 +362,22 @@ document.addEventListener("DOMContentLoaded", () => {
 
     updateCartSystem();
 
-    function showReceiptPopup(receipt) {
-        // remove existing
-        const existing = document.getElementById('receipt-modal-overlay');
-        if (existing) existing.remove();
-
-        const overlay = document.createElement('div');
-        overlay.id = 'receipt-modal-overlay';
-        overlay.className = 'receipt-modal-overlay';
-
-        const modal = document.createElement('div');
-        modal.className = 'receipt-modal';
-
-        let header = '<button class="btn-close-receipt" id="close-receipt-modal">&times;</button>';
-        header += '<div class="modal-header">';
-        header += '<div><strong>Nota Pembayaran</strong><br><small>' + new Date(receipt.createdAt).toLocaleString() + '</small></div>';
-        header += '<div style="text-align:right;"><div><strong>Nota#</strong> ' + receipt.receiptId + '</div><div><strong>Metode:</strong> ' + receipt.method.toUpperCase() + '</div><div><strong>Status:</strong> ' + receipt.status.toUpperCase() + '</div><div><strong>Total:</strong> IDR ' + receipt.total + 'K</div></div>';
-        header += '</div>';
-
-        const itemsHtml = receipt.items.map(function(i){ return '<div class="receipt-row"><div class="receipt-row-left"><img src="' + i.img + '" alt="' + i.name + '"><div><div class="receipt-label">' + i.name + '</div><div class="receipt-quantity">x' + i.quantity + '</div></div></div><div class="receipt-value">IDR ' + i.price + 'K</div></div>'; }).join('');
-
-        let body = '<div class="modal-body"><div class="receipt-items">' + itemsHtml + '</div></div>';
-
-        modal.innerHTML = header + body;
-
-        const actions = document.createElement('div');
-        actions.className = 'receipt-actions';
-
-        modal.appendChild(actions);
-        overlay.appendChild(modal);
-        document.body.appendChild(overlay);
-
-        // add image or instructions depending on method
-        if (receipt.method === 'qris') {
-            const qrDiv = document.createElement('div'); qrDiv.className = 'receipt-qr';
-            const img = document.createElement('img');
-            img.src = receipt.paymentQr || ('https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=' + encodeURIComponent('Nota:'+receipt.receiptId+'|Total:IDR'+receipt.total+'K'));
-            qrDiv.appendChild(img);
-            const count = document.createElement('div'); count.className = 'qris-countdown'; count.id = 'receipt-qris-count'; qrDiv.appendChild(count);
-            modal.appendChild(qrDiv);
-
-            const confirmBtn = document.createElement('button'); confirmBtn.className = 'btn-punk'; confirmBtn.textContent = 'SAYA SUDAH BAYAR';
-            const closeBtn = document.createElement('button'); closeBtn.className = 'btn-punk-outline'; closeBtn.textContent = 'TUTUP';
-            actions.appendChild(confirmBtn); actions.appendChild(closeBtn);
-
-            let interval = null;
-            function update() {
-                const expiry = receipt.createdAt + (15*60*1000);
-                const now = Date.now();
-                const diff = expiry - now;
-                const countdownEl = document.getElementById('receipt-qris-count');
-                if (!countdownEl) return;
-                if (diff<=0) {
-                    clearInterval(interval);
-                    receipt.status='expired'; localStorage.setItem('punkLastReceipt', JSON.stringify(receipt));
-                    countdownEl.textContent='QR EXPIRED'; countdownEl.classList.add('expired'); confirmBtn.disabled=true; return;
-                }
-                const mins=Math.floor(diff/60000); const secs=Math.floor((diff%60000)/1000);
-                countdownEl.textContent = 'Kadaluarsa dalam: ' + String(mins).padStart(2,'0') + ':' + String(secs).padStart(2,'0');
-            }
-            update(); interval=setInterval(update,1000);
-
-            confirmBtn.addEventListener('click', function(){ clearInterval(interval); receipt.status='paid'; localStorage.setItem('punkLastReceipt', JSON.stringify(receipt)); showPunkToast('Pembayaran terkonfirmasi (simulasi)'); overlay.remove(); });
-            closeBtn.addEventListener('click', function(){ clearInterval(interval); overlay.remove(); });
-            document.getElementById('close-receipt-modal').addEventListener('click', function(){ clearInterval(interval); overlay.remove(); });
-        } else {
-            const closeBtn = document.createElement('button'); closeBtn.className='btn-punk-outline'; closeBtn.textContent='TUTUP'; actions.appendChild(closeBtn);
-            closeBtn.addEventListener('click', function(){ overlay.remove(); });
-            document.getElementById('close-receipt-modal').addEventListener('click', function(){ overlay.remove(); });
-        }
-    }
-
     // ==========================================================================
-    // 6. TOAST NOTIFICATION FLOATING GENERATOR
+    // 6. TOAST NOTIFICATION
     // ==========================================================================
     function showPunkToast(message) {
-        const toastContainer = document.getElementById("toast-container");
+        var toastContainer = document.getElementById("toast-container");
         if (!toastContainer) return;
-
-        const toastBox = document.createElement("div");
+        var toastBox = document.createElement("div");
         toastBox.className = "punk-toast-box";
         toastBox.textContent = message;
-
         toastContainer.appendChild(toastBox);
-
-        setTimeout(() => {
+        setTimeout(function() {
             toastBox.style.animation = "fadeOutPunk 0.4s ease-in forwards";
-            setTimeout(() => {
+            setTimeout(function() {
                 toastBox.remove();
             }, 400);
         }, 3500);
     }
+
 });

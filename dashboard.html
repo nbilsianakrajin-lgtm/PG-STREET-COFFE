@@ -10,9 +10,7 @@
 
     <nav class="navbar">
         <button id="hamburger-menu" class="hamburger">&#9776;</button>
-
         <div class="nav-logo">PG <span>STREET COFFEE</span></div>
-        
         <ul class="nav-links" id="nav-links-container">
             <li><a href="index.html">HOME</a></li>
             <li><a href="menu.html">THE FUEL</a></li>
@@ -22,7 +20,6 @@
             <li><a href="dashboard.html" class="active-page">DASHBOARD</a></li>
             <li><a href="profile.html">PROFILE</a></li>
         </ul>
-        
         <div class="nav-actions">
             <button id="auth-trigger" class="btn-nav">MEMBER SIGN-IN</button>
         </div>
@@ -30,15 +27,11 @@
 
     <header class="page-header">
         <h1 class="page-title">KONTROL <span>PANEL</span></h1>
-        <p class="page-subtitle">
-            Pantau semua aktivitas, pesanan, dan statistik konsumsi kafein Anda di markas PG Street Coffee.
-        </p>
+        <p class="page-subtitle">Pantau semua aktivitas, pesanan, dan statistik konsumsi kafein Anda di markas PG Street Coffee.</p>
     </header>
 
     <main class="dashboard-container">
         <div class="dashboard-content">
-
-            <!-- Welcome Banner -->
             <section class="welcome-banner">
                 <div class="banner-content">
                     <h2>Selamat datang kembali, <span id="user-welcome">Pemberontak</span>! 🔥</h2>
@@ -46,7 +39,6 @@
                 </div>
             </section>
 
-            <!-- Quick Stats Grid -->
             <section class="quick-stats">
                 <div class="stat-card">
                     <div class="stat-icon">☕</div>
@@ -74,10 +66,7 @@
                 </div>
             </section>
 
-            <!-- Dashboard Grid -->
             <div class="dashboard-grid">
-
-                <!-- Active Orders Section -->
                 <section class="dashboard-panel">
                     <h3 class="panel-title">[ PESANAN AKTIF ]</h3>
                     <div class="panel-content">
@@ -94,7 +83,6 @@
                     </div>
                 </section>
 
-                <!-- Recent Transactions -->
                 <section class="dashboard-panel">
                     <h3 class="panel-title">[ TRANSAKSI TERBARU ]</h3>
                     <div class="panel-content">
@@ -124,7 +112,6 @@
                     </div>
                 </section>
 
-                <!-- Top Items -->
                 <section class="dashboard-panel">
                     <h3 class="panel-title">[ FUEL FAVORIT ]</h3>
                     <div class="panel-content">
@@ -153,7 +140,6 @@
                     </div>
                 </section>
 
-                <!-- Spending Chart -->
                 <section class="dashboard-panel">
                     <h3 class="panel-title">[ POLA KONSUMSI ]</h3>
                     <div class="panel-content">
@@ -168,33 +154,18 @@
                                 <span>SAB</span>
                             </div>
                             <div class="chart-bars">
-                                <div class="bar" style="height: 60%;">
-                                    <span class="bar-value">IDR 80K</span>
-                                </div>
-                                <div class="bar" style="height: 45%;">
-                                    <span class="bar-value">IDR 60K</span>
-                                </div>
-                                <div class="bar" style="height: 70%;">
-                                    <span class="bar-value">IDR 95K</span>
-                                </div>
-                                <div class="bar" style="height: 50%;">
-                                    <span class="bar-value">IDR 65K</span>
-                                </div>
-                                <div class="bar" style="height: 75%;">
-                                    <span class="bar-value">IDR 100K</span>
-                                </div>
-                                <div class="bar" style="height: 55%;">
-                                    <span class="bar-value">IDR 75K</span>
-                                </div>
-                                <div class="bar" style="height: 80%;">
-                                    <span class="bar-value">IDR 110K</span>
-                                </div>
+                                <div class="bar" style="height: 60%;"><span class="bar-value">IDR 80K</span></div>
+                                <div class="bar" style="height: 45%;"><span class="bar-value">IDR 60K</span></div>
+                                <div class="bar" style="height: 70%;"><span class="bar-value">IDR 95K</span></div>
+                                <div class="bar" style="height: 50%;"><span class="bar-value">IDR 65K</span></div>
+                                <div class="bar" style="height: 75%;"><span class="bar-value">IDR 100K</span></div>
+                                <div class="bar" style="height: 55%;"><span class="bar-value">IDR 75K</span></div>
+                                <div class="bar" style="height: 80%;"><span class="bar-value">IDR 110K</span></div>
                             </div>
                         </div>
                     </div>
                 </section>
 
-                <!-- Loyalty Progress -->
                 <section class="dashboard-panel">
                     <h3 class="panel-title">[ PROGRESS LOYALITAS ]</h3>
                     <div class="panel-content">
@@ -222,7 +193,6 @@
                     </div>
                 </section>
 
-                <!-- Quick Actions -->
                 <section class="dashboard-panel">
                     <h3 class="panel-title">[ AKSI CEPAT ]</h3>
                     <div class="panel-content">
@@ -235,7 +205,7 @@
                                 <span class="action-icon">👤</span>
                                 <span>EDIT PROFIL</span>
                             </a>
-                            <button class="action-btn auth-only" onclick="downloadReport()">
+                            <button class="action-btn" onclick="downloadReport()">
                                 <span class="action-icon">📊</span>
                                 <span>LAPORAN</span>
                             </button>
@@ -246,10 +216,8 @@
                         </div>
                     </div>
                 </section>
-
             </div>
 
-            <!-- Recent Orders Full View -->
             <section class="dashboard-panel full-width">
                 <h3 class="panel-title">[ RIWAYAT PESANAN LENGKAP ]</h3>
                 <div class="panel-content">
@@ -291,47 +259,34 @@
                     </div>
                 </div>
             </section>
-
         </div>
     </main>
 
-    <footer class="footer">
-        <div class="footer-content">
-            <p>&copy; 2024 PG STREET COFFEE. All Rights Reserved. ANARKIS DAN PEMBERONTAK.</p>
-        </div>
+    <footer>
+        <p>&copy; 2026 PG STREET COFFEE - NO RULES, JUST CAFFEINE.</p>
     </footer>
 
+    <div id="toast-container" class="toast-container"></div>
     <script src="main.js"></script>
     <script>
-        // Proteksi akses halaman dashboard jika belum login.
-        document.addEventListener('DOMContentLoaded', () => {
+        document.addEventListener('DOMContentLoaded', function() {
             const isLoggedIn = localStorage.getItem('punkLoggedIn') === 'true';
             if (!isLoggedIn) {
                 window.location.href = 'index.html';
                 return;
             }
 
-            // helper
             function downloadReport() {
-                alert('📊 LAPORAN DIUNDUH!\nFile laporan konsumsi kafein Anda siap.');
+                alert('📊 LAPORAN DIUNDUH! File laporan konsumsi kafein Anda siap.');
             }
 
             function contactSupport() {
-                alert('💬 HUBUNGI SUPPORT\nRedirecting to contact page...');
                 window.location.href = 'contact.html';
             }
 
             function viewOrderDetail(orderId) {
-                alert(`📦 DETAIL PESANAN #PGC-2024-0015${orderId}\nImplementasi detail view diperlukan.`);
+                alert('📦 DETAIL PESANAN #PGC-2024-0015' + orderId);
             }
-
-            const navLinks = document.querySelectorAll('.nav-links a');
-            navLinks.forEach(link => {
-                link.classList.remove('active-page');
-                if (link.href.includes('dashboard.html')) {
-                    link.classList.add('active-page');
-                }
-            });
 
             window.downloadReport = downloadReport;
             window.contactSupport = contactSupport;

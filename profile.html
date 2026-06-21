@@ -10,9 +10,7 @@
 
     <nav class="navbar">
         <button id="hamburger-menu" class="hamburger">&#9776;</button>
-
         <div class="nav-logo">PG <span>STREET COFFEE</span></div>
-        
         <ul class="nav-links" id="nav-links-container">
             <li><a href="index.html">HOME</a></li>
             <li><a href="menu.html">THE FUEL</a></li>
@@ -22,7 +20,6 @@
             <li><a href="dashboard.html">DASHBOARD</a></li>
             <li><a href="profile.html" class="active-page">PROFILE</a></li>
         </ul>
-        
         <div class="nav-actions">
             <button id="auth-trigger" class="btn-nav">MEMBER SIGN-IN</button>
         </div>
@@ -30,28 +27,21 @@
 
     <header class="page-header">
         <h1 class="page-title">MY <span>PROFILE</span></h1>
-        <p class="page-subtitle">
-            Kelola identitas dan preferensi pemberontak Anda di markas PG Street Coffee.
-        </p>
+        <p class="page-subtitle">Kelola identitas dan preferensi pemberontak Anda di markas PG Street Coffee.</p>
     </header>
 
     <main class="profile-container">
         <div class="profile-content-wrapper">
-            
-            <!-- Profile Card -->
             <section class="profile-card-section">
                 <div class="profile-card">
                     <div class="profile-header">
-                        <div class="profile-avatar">
-                            <span id="avatar-initial">A</span>
-                        </div>
+                        <div class="profile-avatar"><span id="avatar-initial">A</span></div>
                         <div class="profile-info-header">
                             <h2 id="profile-name" class="profile-name">Ahmad Punk Warrior</h2>
                             <p id="profile-member-id" class="profile-member-id">MEMBER ID: PGC-2024-001</p>
                             <p id="profile-email" class="profile-email">ahmad@street.punk</p>
                         </div>
                     </div>
-
                     <div class="profile-stats">
                         <div class="stat-box">
                             <span class="stat-label">TOTAL ORDER</span>
@@ -73,10 +63,7 @@
                 </div>
             </section>
 
-            <!-- Profile Sections -->
             <div class="profile-sections-container">
-                
-                <!-- Personal Information Section -->
                 <section class="profile-section">
                     <h3 class="section-title">[ IDENTITAS PEMBERONTAK ]</h3>
                     <div class="section-content">
@@ -102,7 +89,6 @@
                     </div>
                 </section>
 
-                <!-- Preferences Section -->
                 <section class="profile-section">
                     <h3 class="section-title">[ PREFERENSI REBEL ]</h3>
                     <div class="section-content">
@@ -147,7 +133,6 @@
                     </div>
                 </section>
 
-                <!-- Recent Orders -->
                 <section class="profile-section">
                     <h3 class="section-title">[ TRANSAKSI TERBARU ]</h3>
                     <div class="section-content">
@@ -186,7 +171,6 @@
                     </div>
                 </section>
 
-                <!-- Loyalty Program -->
                 <section class="profile-section">
                     <h3 class="section-title">[ PROGRAM LOYALITAS ]</h3>
                     <div class="section-content">
@@ -211,7 +195,6 @@
                     </div>
                 </section>
 
-                <!-- Security Section -->
                 <section class="profile-section">
                     <h3 class="section-title">[ KEAMANAN MARKAS ]</h3>
                     <div class="section-content">
@@ -241,7 +224,6 @@
                     </div>
                 </section>
 
-                <!-- Danger Zone -->
                 <section class="profile-section danger-zone">
                     <h3 class="section-title">[ ZONA BERBAHAYA ]</h3>
                     <div class="section-content">
@@ -256,22 +238,18 @@
                         </div>
                     </div>
                 </section>
-
             </div>
-
         </div>
     </main>
 
-    <footer class="footer">
-        <div class="footer-content">
-            <p>&copy; 2024 PG STREET COFFEE. All Rights Reserved. ANARKIS DAN PEMBERONTAK.</p>
-        </div>
+    <footer>
+        <p>&copy; 2026 PG STREET COFFEE - NO RULES, JUST CAFFEINE.</p>
     </footer>
 
+    <div id="toast-container" class="toast-container"></div>
     <script src="main.js"></script>
     <script>
-        // Proteksi akses halaman profile jika belum login.
-        document.addEventListener('DOMContentLoaded', () => {
+        document.addEventListener('DOMContentLoaded', function() {
             const isLoggedIn = localStorage.getItem('punkLoggedIn') === 'true';
             if (!isLoggedIn) {
                 window.location.href = 'index.html';
@@ -279,20 +257,12 @@
             }
 
             function savePreferences() {
-                alert('✓ PREFERENSI TERSIMPAN!\nKopi Anda siap sesuai seleramu.');
+                alert('✓ PREFERENSI TERSIMPAN! Kopi Anda siap sesuai seleramu.');
             }
 
             function openPasswordModal() {
-                alert('Dialog ubah password siap dibuka (implementasi lebih lanjut diperlukan)');
+                alert('🔐 Dialog ubah password (implementasi lebih lanjut diperlukan)');
             }
-
-            const navLinks = document.querySelectorAll('.nav-links a');
-            navLinks.forEach(link => {
-                link.classList.remove('active-page');
-                if (link.href.includes('profile.html')) {
-                    link.classList.add('active-page');
-                }
-            });
 
             window.savePreferences = savePreferences;
             window.openPasswordModal = openPasswordModal;
